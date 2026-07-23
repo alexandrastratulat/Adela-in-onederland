@@ -1,34 +1,53 @@
 "use client";
 
+import { useExperience } from "../context/ExperienceContext";
+
 import Atmosphere from "../world/Atmosphere";
 import Desk from "../world/Desk";
 import Book from "../world/Book";
 
 import FloatingDust from "../effects/FloatingDust";
 import GoldenLight from "../effects/GoldenLight";
+import PageGlow from "../effects/PageGlow";
+
+import WonderlandScene from "./WonderlandScene";
 
 export default function IntroScene({started}){
 
-return(
+    const { chapter } = useExperience();
 
-<>
+    return(
 
-<Atmosphere/>
+        <>
 
-<Desk/>
+            <Atmosphere/>
 
-<Book
+            {chapter==="intro" && <Desk/>}
 
-started={started}
+            {chapter==="intro" &&
 
-/>
+                <Book
 
-<FloatingDust/>
+                    started={started}
 
-<GoldenLight/>
+                />
 
-</>
+            }
 
-);
+            {chapter==="intro" && <FloatingDust/>}
+
+            {chapter==="intro" && <GoldenLight/>}
+
+            {chapter==="intro" && <PageGlow/>}
+
+            {(chapter==="portal" || chapter==="wonderland") &&
+
+                <WonderlandScene/>
+
+            }
+
+        </>
+
+    );
 
 }
