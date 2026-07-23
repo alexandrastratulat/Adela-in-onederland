@@ -1,14 +1,53 @@
 "use client";
 
-import { createContext,useContext,useState } from "react";
+import {
+
+createContext,
+useContext,
+useState
+
+} from "react";
 
 const ExperienceContext=createContext();
 
-export function ExperienceProvider({children}){
+export function ExperienceProvider({
+
+children
+
+}){
 
 const [chapter,setChapter]=useState("intro");
 
-const [bookOpened,setBookOpened]=useState(false);
+const nextChapter=()=>{
+
+const chapters=[
+
+"intro",
+"portal",
+"wonderland",
+"invitation",
+"gallery",
+"countdown",
+"rsvp",
+"ending"
+
+];
+
+const index=
+
+chapters.indexOf(chapter);
+
+if(index<chapters.length-1){
+
+setChapter(
+
+chapters[index+1]
+
+);
+
+}
+
+};
 
 return(
 
@@ -20,9 +59,7 @@ chapter,
 
 setChapter,
 
-bookOpened,
-
-setBookOpened
+nextChapter
 
 }}
 
@@ -38,6 +75,10 @@ setBookOpened
 
 export function useExperience(){
 
-return useContext(ExperienceContext);
+return useContext(
+
+ExperienceContext
+
+);
 
 }
