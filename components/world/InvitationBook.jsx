@@ -11,7 +11,7 @@ export default function InvitationBook() {
     const {
 
         setSelectedObject,
-        setCsmeraTarget
+        setCameraTarget
 
     } = useExperience();
 
