@@ -12,7 +12,9 @@ const ref=useRef();
 
 const{
 
-setSelectedObject
+setSelectedObject,
+setCameraTarget,
+setBookOpened
 
 }=useExperience();
 
@@ -35,9 +37,7 @@ ref.current.scale,
 {
 
 x:0,
-
 y:0,
-
 z:0,
 
 duration:.8,
@@ -48,11 +48,11 @@ ease:"back.in"
 
 );
 
-setSelectedObject(
+setSelectedObject("seal");
 
-"seal"
+setBookOpened(true);
 
-);
+setCameraTarget("insideBook");
 
 }}
 
