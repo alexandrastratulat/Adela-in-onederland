@@ -20,6 +20,8 @@ const [chapter,setChapter]=useState("intro");
 
 const [selectedObject,setSelectedObject]=useState(null);
 
+const [cameraTarget, setCameraTarget] = useState("default");
+  
 const [bookOpened,setBookOpened]=useState(false);
   
 const nextChapter=()=>{
@@ -71,7 +73,11 @@ setSelectedObject,
 
 bookOpened,
 
-setBookOpened
+setBookOpened,
+
+cameraTarget,
+  
+setCameraTarget
 
 }}
 
