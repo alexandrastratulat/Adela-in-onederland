@@ -5,7 +5,7 @@ import { Environment } from "@react-three/drei";
 import CameraRig from "./camera/CameraRig";
 import IntroScene from "./scenes/IntroScene";
 
-export default function Experience() {
+export default function Experience({ started }) {
   return (
     <Canvas
       shadows
@@ -29,7 +29,7 @@ export default function Experience() {
 
       <CameraRig />
 
-      <IntroScene />
+      <IntroScene started={started} />
     </Canvas>
   );
 }
