@@ -2,23 +2,19 @@
 
 import { Canvas } from "@react-three/fiber";
 
-import {
-
-Environment
-
-} from "@react-three/drei";
+import { Environment } from "@react-three/drei";
 
 import CameraRig from "./camera/CameraRig";
 
-import IntroScene from "./scenes/IntroScene";
+import SceneManager from "./managers/SceneManager";
 
-export default function Experience({
+import OverlayManager from "./managers/OverlayManager";
 
-started
-
-}){
+export default function Experience({started}){
 
 return(
+
+<>
 
 <Canvas
 
@@ -46,9 +42,9 @@ args={["#f7f4ef"]}
 
 <directionalLight
 
-castShadow
-
 position={[4,8,4]}
+
+castShadow
 
 intensity={2}
 
@@ -58,13 +54,17 @@ intensity={2}
 
 <CameraRig/>
 
-<IntroScene
+<SceneManager
 
 started={started}
 
 />
 
 </Canvas>
+
+<OverlayManager/>
+
+</>
 
 );
 
