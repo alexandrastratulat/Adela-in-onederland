@@ -2,26 +2,32 @@
 
 import { AnimatePresence } from "framer-motion";
 
-import InvitationOverlay from "../overlay/InvitationOverlay";
-
 import { useExperience } from "../context/ExperienceContext";
+
+import InvitationOverlay from "../overlay/InvitationOverlay";
 
 export default function OverlayManager(){
 
-    const { chapter } = useExperience();
+const{
 
-    return(
+chapter
 
-        <AnimatePresence mode="wait">
+}=useExperience();
 
-            {chapter==="invitation" && (
+return(
 
-                <InvitationOverlay/>
+<AnimatePresence mode="wait">
 
-            )}
+{
 
-        </AnimatePresence>
+chapter==="invitation" &&
 
-    );
+<InvitationOverlay/>
+
+}
+
+</AnimatePresence>
+
+);
 
 }
