@@ -10,7 +10,8 @@ export default function InvitationBook() {
 
     const {
 
-        setSelectedObject
+        setSelectedObject,
+        setCsmeraTarget
 
     } = useExperience();
 
@@ -33,6 +34,8 @@ export default function InvitationBook() {
             onClick={()=>{
 
                 setSelectedObject("book");
+
+                setCameraTarget("book");
 
             }}
 
