@@ -14,6 +14,10 @@ import TeaTable from "../world/TeaTable";
 import PlayingCards from "../world/PlayingCards";
 import GoldenKeys from "../world/GoldenKeys";
 
+import InvitationBook from "../world/InvitationBook";
+import InvitationSpotLight from "../world/InvitationSpotLight";
+import WaxSeal3D from "../world/WaxSeal3D";
+
 export default function WonderlandScene(){
 
     return(
@@ -41,6 +45,12 @@ export default function WonderlandScene(){
             <PlayingCards/>
 
             <GoldenKeys/>
+
+            <InvitationSpotLight/>
+
+            <InvitationBook/>
+
+            <WaxSeal3D/>
 
         </group>
 
