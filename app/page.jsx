@@ -1,7 +1,32 @@
 "use client";
 
-import Experience from "@/components/Experience";
+import { useState } from "react";
 
-export default function Home() {
-  return <Experience />;
+import Experience from "@/components/Experience";
+import OpenButton from "@/components/ui/OpenButton";
+
+export default function Home(){
+
+const [started,setStarted]=useState(false);
+
+return(
+
+<>
+
+<Experience started={started}/>
+
+{!started && (
+
+<OpenButton
+
+onClick={()=>setStarted(true)}
+
+/>
+
+)}
+
+</>
+
+);
+
 }
