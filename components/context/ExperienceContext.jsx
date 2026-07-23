@@ -20,6 +20,8 @@ const [chapter,setChapter]=useState("intro");
 
 const [selectedObject,setSelectedObject]=useState(null);
 
+const [bookOpened,setBookOpened]=useState(false);
+  
 const nextChapter=()=>{
 
 const chapters=[
@@ -65,7 +67,11 @@ nextChapter,
 
 selectedObject,
   
-setSelectedObject
+setSelectedObject,
+
+bookOpened,
+
+setBookOpened
 
 }}
 
