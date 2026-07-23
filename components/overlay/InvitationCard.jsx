@@ -2,6 +2,10 @@
 
 import styles from "./InvitationCard.module.css";
 
+import StoryText from "./StoryText";
+import WaxSeal from "./WaxSeal";
+import RSVPButton from "./RSVPButton";
+
 export default function InvitationCard(){
 
 return(
@@ -22,41 +26,21 @@ Adela in ONEderland
 
 <div className={styles.separator}/>
 
-<p className={styles.story}>
-
-Fiecare poveste începe cu o pagină.
-
-Vă invităm să faceți parte din primul capitol al Adelei.
-
-</p>
+<StoryText/>
 
 <div className={styles.info}>
 
-<div>
+<div>📅 28 noiembrie 2026</div>
 
-<span>📅</span>
+<div>🕐 Ora 13:00</div>
 
-28 noiembrie 2026
-
-</div>
-
-<div>
-
-<span>🕐</span>
-
-13:00
+<div>📍 Vila Hepa • Brașov</div>
 
 </div>
 
-<div>
+<WaxSeal/>
 
-<span>📍</span>
-
-Vila Hepa • Brașov
-
-</div>
-
-</div>
+<RSVPButton/>
 
 </div>
 
