@@ -5,10 +5,30 @@ import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
 import { useExperience } from "../context/ExperienceContext";
+import useCameraAnimation from "./useCameraAnimation";
 
 export default function CameraRig() {
 
     const camera = useRef();
+
+    const {
+
+    zoomBook,
+
+resetCamera
+
+}=useCameraAnimation(
+
+camera.current
+
+);
+
+
+    const{
+
+selectedObject
+
+}=useExperience();
 
     const target = useRef(new THREE.Vector3(0,1.6,8));
     const lookAt = useRef(new THREE.Vector3(0,1.2,0));
@@ -68,6 +88,30 @@ export default function CameraRig() {
             break;
 
         }
+
+        if(selectedObject==="book"){
+
+target.current.set(
+
+0,
+
+1.45,
+
+-16.8
+
+);
+
+lookAt.current.set(
+
+0,
+
+0.8,
+
+-18
+
+);
+
+}
 
         camera.current.position.lerp(
             target.current,
