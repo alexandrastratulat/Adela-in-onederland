@@ -22,7 +22,11 @@ resetCamera
 camera.current
 
 );
+const{
 
+cameraTarget
+
+}=useExperience();
 
     const{
 
@@ -88,6 +92,58 @@ selectedObject
             break;
 
         }
+
+        switch(cameraTarget){
+
+case "book":
+
+target.current.set(
+
+0,
+
+1.45,
+
+-16.8
+
+);
+
+lookAt.current.set(
+
+0,
+
+0.8,
+
+-18
+
+);
+
+break;
+
+case "insideBook":
+
+target.current.set(
+
+0,
+
+1.05,
+
+-18
+
+);
+
+lookAt.current.set(
+
+0,
+
+0.8,
+
+-22
+
+);
+
+break;
+
+}
 
         if(selectedObject==="book"){
 
