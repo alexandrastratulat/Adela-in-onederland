@@ -1,0 +1,37 @@
+.wrapper{
+
+display:flex;
+
+justify-content:center;
+
+margin:35px 0;
+
+}
+
+.seal{
+
+width:90px;
+
+height:90px;
+
+border-radius:50%;
+
+background:#982e33;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+color:white;
+
+font-size:38px;
+
+font-family:"Cinzel Decorative",serif;
+
+box-shadow:
+
+0 12px 35px rgba(0,0,0,.25);
+
+}
