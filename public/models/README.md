@@ -1,9 +1,19 @@
-Adaugă aici modelele GLB:
+
 
 book.glb
 desk.glb
 feather.glb
-clock.glb
 rose.glb
 
-Vom începe folosind doar book.glb.
+tree.glb
+flowers.glb
+mushroom.glb
+teapot.glb
+chair.glb
+table.glb
+key.glb
+clock.glb
+rabbit.glb
+cards.glb
+
+
