@@ -1,26 +1,50 @@
 "use client";
 
-import { Clone, Text, useGLTF } from "@react-three/drei";
+import { Clone, Text, useCursor, useGLTF } from "@react-three/drei";
+import { useState } from "react";
+import { useExperience } from "../context/ExperienceContext";
 
 export default function InvitationBook() {
 
     const { scene } = useGLTF("/models/open_book.glb");
 
-    return (
+    const {
+
+        setSelectedObject
+
+    } = useExperience();
+
+    const [hovered,setHovered]=useState(false);
+
+    useCursor(hovered);
+
+    return(
 
         <group
+
             position={[0,0.82,-18]}
+
             rotation={[0,Math.PI,0]}
+
+            onPointerOver={()=>setHovered(true)}
+
+            onPointerOut={()=>setHovered(false)}
+
+            onClick={()=>{
+
+                setSelectedObject("book");
+
+            }}
+
         >
 
             <Clone
-                object={scene}
-                scale={1.15}
-                castShadow
-                receiveShadow
-            />
 
-            {/* PAGINA STÂNGĂ */}
+                object={scene}
+
+                scale={1.15}
+
+            />
 
             <Text
 
@@ -28,13 +52,11 @@ export default function InvitationBook() {
 
                 rotation={[-Math.PI/2,0,0]}
 
-                fontSize={0.075}
+                fontSize={0.07}
 
-                color="#4b3929"
+                color="#4d3927"
 
                 anchorX="center"
-
-                maxWidth={1}
 
             >
 
@@ -50,79 +72,17 @@ export default function InvitationBook() {
 
                 fontSize={0.11}
 
-                maxWidth={1}
-
-                color="#6b5037"
+                color="#5c4430"
 
                 anchorX="center"
 
             >
 
                 Adela in
+
                 {"\n"}
+
                 ONEderland
-
-            </Text>
-
-            {/* PAGINA DREAPTĂ */}
-
-            <Text
-
-                position={[0.55,0.22,0.015]}
-
-                rotation={[-Math.PI/2,0,0]}
-
-                fontSize={0.055}
-
-                color="#4b3929"
-
-                maxWidth={1}
-
-                anchorX="center"
-
-            >
-
-                28 noiembrie 2026
-
-            </Text>
-
-            <Text
-
-                position={[0.55,0.06,0.015]}
-
-                rotation={[-Math.PI/2,0,0]}
-
-                fontSize={0.055}
-
-                color="#4b3929"
-
-                anchorX="center"
-
-            >
-
-                Ora 13:00
-
-            </Text>
-
-            <Text
-
-                position={[0.55,-0.12,0.015]}
-
-                rotation={[-Math.PI/2,0,0]}
-
-                fontSize={0.05}
-
-                maxWidth={1}
-
-                color="#4b3929"
-
-                anchorX="center"
-
-            >
-
-                Vila Hepa
-                {"\n"}
-                Brașov
 
             </Text>
 
