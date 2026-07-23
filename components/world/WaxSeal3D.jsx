@@ -1,35 +1,87 @@
 "use client";
 
+import { useRef } from "react";
+
+import gsap from "gsap";
+
+import { useExperience } from "../context/ExperienceContext";
+
 export default function WaxSeal3D(){
 
-    return(
+const ref=useRef();
 
-        <mesh
+const{
 
-            position={[0.92,0.30,-17.96]}
+setSelectedObject
 
-            rotation={[-Math.PI/2,0,0]}
+}=useExperience();
 
-            castShadow
+return(
 
-        >
+<mesh
 
-            <cylinderGeometry
+ref={ref}
 
-                args={[0.09,0.09,0.02,64]}
+position={[0.92,0.30,-17.96]}
 
-            />
+rotation={[-Math.PI/2,0,0]}
 
-            <meshStandardMaterial
+onClick={()=>{
 
-                color="#8d232e"
+gsap.to(
 
-                roughness={0.8}
+ref.current.scale,
 
-            />
+{
 
-        </mesh>
+x:0,
 
-    );
+y:0,
+
+z:0,
+
+duration:.8,
+
+ease:"back.in"
+
+}
+
+);
+
+setSelectedObject(
+
+"seal"
+
+);
+
+}}
+
+>
+
+<cylinderGeometry
+
+args={[
+
+0.09,
+
+0.09,
+
+0.02,
+
+64
+
+]}
+
+/>
+
+<meshStandardMaterial
+
+color="#982d34"
+
+/>
+
+</mesh>
+
+);
 
 }
