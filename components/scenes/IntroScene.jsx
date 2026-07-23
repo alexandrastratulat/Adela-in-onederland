@@ -1,23 +1,17 @@
 "use client";
 
+import Atmosphere from "../world/Atmosphere";
 import Desk from "../world/Desk";
 import Book from "../world/Book";
-import Atmosphere from "../world/Atmosphere";
 
-export default function IntroScene() {
+export default function IntroScene({ started }) {
 
-    return(
-
+    return (
         <>
-
-            <Atmosphere/>
-
-            <Desk/>
-
-            <Book/>
-
+            <Atmosphere />
+            <Desk />
+            <Book started={started} />
         </>
-
-    )
+    );
 
 }
