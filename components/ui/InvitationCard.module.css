@@ -1,0 +1,61 @@
+.wrapper{
+
+position:absolute;
+
+right:80px;
+
+top:50%;
+
+transform:translateY(-50%);
+
+width:360px;
+
+padding:48px;
+
+border-radius:24px;
+
+background:rgba(255,255,255,.82);
+
+backdrop-filter:blur(14px);
+
+box-shadow:0 20px 60px rgba(0,0,0,.12);
+
+font-family:"Cormorant Garamond",serif;
+
+color:#5b4532;
+
+}
+
+.wrapper h1{
+
+font-size:42px;
+
+margin-bottom:10px;
+
+}
+
+.wrapper h2{
+
+margin-top:24px;
+
+font-size:30px;
+
+}
+
+.wrapper h3{
+
+font-size:24px;
+
+margin-bottom:20px;
+
+}
+
+.line{
+
+height:1px;
+
+background:#ccb07b;
+
+margin:25px 0;
+
+}
