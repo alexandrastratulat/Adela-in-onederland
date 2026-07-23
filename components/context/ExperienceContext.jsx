@@ -1,37 +1,43 @@
 "use client";
 
-import { createContext, useContext, useState } from "react";
+import { createContext,useContext,useState } from "react";
 
-const ExperienceContext = createContext();
+const ExperienceContext=createContext();
 
-export function ExperienceProvider({ children }) {
+export function ExperienceProvider({children}){
 
-    const [chapter, setChapter] = useState("intro");
+const [chapter,setChapter]=useState("intro");
 
-    return (
+const [bookOpened,setBookOpened]=useState(false);
 
-        <ExperienceContext.Provider
+return(
 
-            value={{
+<ExperienceContext.Provider
 
-                chapter,
+value={{
 
-                setChapter
+chapter,
 
-            }}
+setChapter,
 
-        >
+bookOpened,
 
-            {children}
+setBookOpened
 
-        </ExperienceContext.Provider>
+}}
 
-    );
+>
+
+{children}
+
+</ExperienceContext.Provider>
+
+);
 
 }
 
 export function useExperience(){
 
-    return useContext(ExperienceContext);
+return useContext(ExperienceContext);
 
 }
