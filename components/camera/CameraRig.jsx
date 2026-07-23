@@ -1,105 +1,97 @@
 "use client";
 
 import { PerspectiveCamera } from "@react-three/drei";
-
 import { useFrame } from "@react-three/fiber";
-
 import { useRef } from "react";
-
 import * as THREE from "three";
-
 import { useExperience } from "../context/ExperienceContext";
 
-export default function CameraRig(){
+export default function CameraRig() {
 
-const camera=useRef();
+    const camera = useRef();
 
-const target=new THREE.Vector3();
+    const target = useRef(new THREE.Vector3(0,1.6,8));
+    const lookAt = useRef(new THREE.Vector3(0,1.2,0));
 
-const look=new THREE.Vector3();
+    const { chapter } = useExperience();
 
-const {
+    useFrame((state,delta)=>{
 
-chapter
+        switch(chapter){
 
-}=useExperience();
+            case "intro":
 
-useFrame((state,delta)=>{
+                target.current.set(
+                    0,
+                    1.6,
+                    8
+                );
 
-if(chapter==="intro"){
+                lookAt.current.set(
+                    0,
+                    1.2,
+                    0
+                );
 
-target.set(
+            break;
 
-0,
+            case "book":
 
-1.65,
+                target.current.set(
+                    0,
+                    1.3,
+                    3
+                );
 
-8
+                lookAt.current.set(
+                    0,
+                    0.8,
+                    0
+                );
 
-);
+            break;
 
-look.set(
+            case "portal":
 
-0,
+                target.current.set(
+                    0,
+                    0.9,
+                    0.8
+                );
 
-1.2,
+                lookAt.current.set(
+                    0,
+                    0.8,
+                    -4
+                );
 
-0
+            break;
 
-);
+        }
 
-}
+        camera.current.position.lerp(
+            target.current,
+            delta * 1.4
+        );
 
-if(chapter==="book"){
+        camera.current.lookAt(lookAt.current);
 
-target.set(
+    });
 
-0,
+    return(
 
-1.25,
+        <PerspectiveCamera
 
-2.8
+            ref={camera}
 
-);
+            makeDefault
 
-look.set(
+            position={[0,1.6,8]}
 
-0,
+            fov={38}
 
-0.8,
+        />
 
-0
-
-);
-
-}
-
-camera.current.position.lerp(
-
-target,
-
-delta
-
-);
-
-camera.current.lookAt(look);
-
-});
-
-return(
-
-<PerspectiveCamera
-
-ref={camera}
-
-makeDefault
-
-position={[0,1.6,8]}
-
-fov={38}
-
-/>
-
-);
+    );
 
 }
