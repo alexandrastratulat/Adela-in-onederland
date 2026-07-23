@@ -1,47 +1,42 @@
 "use client";
 
-import { Float } from "@react-three/drei";
+import { useRef } from "react";
+import { useGLTF } from "@react-three/drei";
+import gsap from "gsap";
 
-export default function Book(){
+export default function Book() {
 
-return(
+    const group = useRef();
+    const cover = useRef();
 
-<Float
+    const { scene } = useGLTF("/models/book.glb");
 
-speed={1.4}
+    const openBook = () => {
 
-rotationIntensity={0.15}
+        if (!cover.current) return;
 
-floatIntensity={0.25}
+        gsap.to(cover.current.rotation, {
+            y: -Math.PI * 0.82,
+            duration: 2.2,
+            ease: "power3.inOut"
+        });
 
->
+    };
 
-<mesh
+    return (
 
-castShadow
+        <group
+            ref={group}
+            position={[0,0.05,0]}
+            scale={1}
+        >
 
-position={[0,0.18,0]}
+            <primitive object={scene} />
 
->
+        </group>
 
-<boxGeometry
-
-args={[2.8,3.8,0.35]}
-
-/>
-
-<meshStandardMaterial
-
-color="#efe0cf"
-
-roughness={0.85}
-
-/>
-
-</mesh>
-
-</Float>
-
-)
+    );
 
 }
+
+useGLTF.preload("/models/book.glb");
