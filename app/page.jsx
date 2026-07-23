@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import Experience from "@/components/Experience";
 import OpenButton from "@/components/ui/OpenButton";
+import InvitationCard from "@/components/ui/InvitationCard";
 
 import {
 
@@ -24,6 +25,8 @@ return(
 started={started}
 
 />
+
+<InvitationCard/>
 
 {
 
