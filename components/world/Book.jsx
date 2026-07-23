@@ -1,40 +1,20 @@
 "use client";
 
-import {
-
-useEffect
-
-} from "react";
-
-import {
-
-useGLTF
-
-} from "@react-three/drei";
-
-import {
-
-useExperience
-
-} from "../context/ExperienceContext";
-
+import { useEffect } from "react";
+import { useGLTF } from "@react-three/drei";
 import gsap from "gsap";
 
-export default function Book({
+import { useExperience } from "../context/ExperienceContext";
 
-started
+export default function Book({started}){
 
-}){
+const {scene}=useGLTF("/models/book.glb");
 
-const {
+const{
 
-scene
+setChapter,
 
-}=useGLTF("/models/book.glb");
-
-const {
-
-setChapter
+setBookOpened
 
 }=useExperience();
 
@@ -52,7 +32,7 @@ scene.rotation,
 
 y:-Math.PI*0.82,
 
-duration:2.2,
+duration:2.4,
 
 ease:"power3.inOut"
 
@@ -60,9 +40,27 @@ ease:"power3.inOut"
 
 );
 
+tl.to(
+
+scene.position,
+
+{
+
+z:-0.35,
+
+duration:1
+
+},
+
+"-=1.8"
+
+);
+
 tl.call(()=>{
 
-setChapter("book");
+setBookOpened(true);
+
+setChapter("portal");
 
 });
 
@@ -74,7 +72,7 @@ return(
 
 object={scene}
 
-position={[0,0.12,0]}
+position={[0,0.15,0]}
 
 />
 
