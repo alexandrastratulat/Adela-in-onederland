@@ -1,48 +1,105 @@
 "use client";
 
 import { PerspectiveCamera } from "@react-three/drei";
+
 import { useFrame } from "@react-three/fiber";
+
 import { useRef } from "react";
+
 import * as THREE from "three";
 
-export default function CameraRig() {
+import { useExperience } from "../context/ExperienceContext";
 
-    const camera = useRef();
+export default function CameraRig(){
 
-    useFrame((state, delta)=>{
+const camera=useRef();
 
-        camera.current.position.lerp(
+const target=new THREE.Vector3();
 
-            new THREE.Vector3(
+const look=new THREE.Vector3();
 
-                0,
-                1.7,
-                8
+const {
 
-            ),
+chapter
 
-            delta*1.4
+}=useExperience();
 
-        );
+useFrame((state,delta)=>{
 
-        camera.current.lookAt(0,1.3,0);
+if(chapter==="intro"){
 
-    });
+target.set(
 
-    return(
+0,
 
-        <PerspectiveCamera
+1.65,
 
-            makeDefault
+8
 
-            ref={camera}
+);
 
-            position={[0,1.7,8]}
+look.set(
 
-            fov={38}
+0,
 
-        />
+1.2,
 
-    )
+0
+
+);
+
+}
+
+if(chapter==="book"){
+
+target.set(
+
+0,
+
+1.25,
+
+2.8
+
+);
+
+look.set(
+
+0,
+
+0.8,
+
+0
+
+);
+
+}
+
+camera.current.position.lerp(
+
+target,
+
+delta
+
+);
+
+camera.current.lookAt(look);
+
+});
+
+return(
+
+<PerspectiveCamera
+
+ref={camera}
+
+makeDefault
+
+position={[0,1.6,8]}
+
+fov={38}
+
+/>
+
+);
 
 }
