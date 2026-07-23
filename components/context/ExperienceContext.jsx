@@ -18,6 +18,8 @@ children
 
 const [chapter,setChapter]=useState("intro");
 
+const [selectedObject,setSelectedObject]=useState(null);
+
 const nextChapter=()=>{
 
 const chapters=[
@@ -59,7 +61,11 @@ chapter,
 
 setChapter,
 
-nextChapter
+nextChapter,
+
+selectedObject,
+  
+setSelectedObject
 
 }}
 
