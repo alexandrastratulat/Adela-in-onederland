@@ -1,41 +1,84 @@
 "use client";
 
-import { useRef } from "react";
-import { useGLTF } from "@react-three/drei";
+import {
+
+useEffect
+
+} from "react";
+
+import {
+
+useGLTF
+
+} from "@react-three/drei";
+
+import {
+
+useExperience
+
+} from "../context/ExperienceContext";
+
 import gsap from "gsap";
 
-export default function Book() {
+export default function Book({
 
-    const group = useRef();
-    const cover = useRef();
+started
 
-    const { scene } = useGLTF("/models/book.glb");
+}){
 
-    const openBook = () => {
+const {
 
-        if (!cover.current) return;
+scene
 
-        gsap.to(cover.current.rotation, {
-            y: -Math.PI * 0.82,
-            duration: 2.2,
-            ease: "power3.inOut"
-        });
+}=useGLTF("/models/book.glb");
 
-    };
+const {
 
-    return (
+setChapter
 
-        <group
-            ref={group}
-            position={[0,0.05,0]}
-            scale={1}
-        >
+}=useExperience();
 
-            <primitive object={scene} />
+useEffect(()=>{
 
-        </group>
+if(!started)return;
 
-    );
+const tl=gsap.timeline();
+
+tl.to(
+
+scene.rotation,
+
+{
+
+y:-Math.PI*0.82,
+
+duration:2.2,
+
+ease:"power3.inOut"
+
+}
+
+);
+
+tl.call(()=>{
+
+setChapter("book");
+
+});
+
+},[started]);
+
+return(
+
+<primitive
+
+object={scene}
+
+position={[0,0.12,0]}
+
+/>
+
+);
 
 }
 
