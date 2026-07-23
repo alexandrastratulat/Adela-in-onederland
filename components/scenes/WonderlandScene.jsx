@@ -17,6 +17,7 @@ import GoldenKeys from "../world/GoldenKeys";
 import InvitationBook from "../world/InvitationBook";
 import InvitationSpotLight from "../world/InvitationSpotLight";
 import WaxSeal3D from "../world/WaxSeal3D";
+import InkParticles from "../world/InkParticles";
 
 export default function WonderlandScene(){
 
@@ -51,6 +52,8 @@ export default function WonderlandScene(){
             <InvitationBook/>
 
             <WaxSeal3D/>
+
+            <InkParticles/>
 
         </group>
 
